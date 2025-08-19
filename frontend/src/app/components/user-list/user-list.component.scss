@@ -1,0 +1,46 @@
+.nav {
+  display: flex;
+  height: 5rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  border: 0.5px solid rgb(165, 165, 165);
+  border-radius: 10px;
+  border-spacing: 0px;
+  padding: 5px;
+  background-color: rgb(227, 241, 255);
+  font-family: "Inter", sans-serif;
+  td {
+    border-top: 1px solid rgb(165, 165, 165);
+    font-size: 0.9em;
+    background-color: rgb(227, 241, 255);
+    padding: 5px;
+  }
+  th {
+    text-align: left;
+    background-color: rgb(227, 241, 255);
+    padding: 5px;
+  }
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-delete {
+  border: 1px solid #dc3545;
+  background-color: #ffdada;
+  color: #dc3545;
+  font-weight: 600;
+}
+.button-edit {
+  border: 1px solid #fd7e14;
+  background-color: #fff2e6;
+  color: #fd7e14;
+  font-weight: 600;
+}

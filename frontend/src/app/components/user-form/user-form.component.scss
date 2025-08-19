@@ -1,0 +1,52 @@
+form {
+  width: 100%;
+  background-color: rgb(227, 241, 255);
+  border: 0.5px solid rgb(165, 165, 165);
+  border-radius: 10px;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+  width: 400px;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 0px;
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.9em;
+    padding-left: 10px;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgb(100, 150, 255);
+    box-shadow: 0 0 5px rgba(100, 150, 255, 0.5);
+    outline: none;
+  }
+
+  button {
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: rgb(100, 150, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+  }
+
+  button:hover {
+    background-color: rgb(80, 130, 230);
+  }
+}

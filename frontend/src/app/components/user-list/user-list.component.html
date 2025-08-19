@@ -1,0 +1,33 @@
+<h2>Lista użytkowników</h2>
+<div class="nav">
+  <button class="button-secondary" (click)="addUser()">
+    + Dodaj użytkownika
+  </button>
+  <button class="button-primary" (click)="goToHome()">
+    &#8592; Strona główna
+  </button>
+</div>
+
+<table>
+  <tr>
+    <th>Imię</th>
+    <th>Email</th>
+    <th class="options">Akcje</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td class="options">
+      <button class="button-edit" *ngIf="user.id" (click)="editUser(user.id)">
+        Edytuj
+      </button>
+      <button
+        class="button-delete"
+        *ngIf="user.id"
+        (click)="deleteUser(user.id)"
+      >
+        Usuń
+      </button>
+    </td>
+  </tr>
+</table>

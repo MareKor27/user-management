@@ -1,0 +1,11 @@
+<h2>Edytuj użytkownika o ID: {{ user.id }}</h2>
+<form (ngSubmit)="updateUser()">
+  <label>Imię:</label>
+  <input [(ngModel)]="user.username" name="name" required />
+
+  <label>Email:</label>
+  <input [(ngModel)]="user.email" name="email" required />
+
+  <button type="submit">Zaktualizuj</button>
+</form>
+<button class="button-primary" (click)="goToUserList()">&#8592; Wróć</button>
