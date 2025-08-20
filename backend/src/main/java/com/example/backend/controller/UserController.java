@@ -14,7 +14,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    // można stworzyć typ zmienej w której odpowiedzią na zapytania były by [dane?,status,wiadomość]
+
 
     private final UserRepository userRepository;
     public UserController(UserRepository userRepository) {
@@ -30,7 +30,6 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
         User saved = userRepository.save(user);
         return ResponseEntity.ok(saved);
-        // return ResponseEntity.status(HttpStatus.CREATED).body("User created");
     }
 
     @GetMapping("/{id}")
