@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -25,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
         User saved = userRepository.save(user);
         return ResponseEntity.ok(saved);
         // return ResponseEntity.status(HttpStatus.CREATED).body("User created");
@@ -39,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
+    public ResponseEntity<?> updateUser(@PathVariable String id,@Valid @RequestBody User updatedUser) {
         return userRepository.findById(id)
                 .map(user -> {
                     if (!user.getEmail().equals(updatedUser.getEmail()) &&
@@ -50,8 +52,8 @@ public class UserController {
 
                     user.setUsername(updatedUser.getUsername());
                     user.setEmail(updatedUser.getEmail());
-                    userRepository.save(user); 
-                    return ResponseEntity.ok("User updated");
+                    User saved = userRepository.save(user); 
+                    return ResponseEntity.ok(saved);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
