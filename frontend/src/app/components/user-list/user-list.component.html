@@ -10,24 +10,20 @@
 
 <table>
   <tr>
-    <th>Imię</th>
+    <th>Personalia</th>
     <th>Email</th>
     <th class="options">Akcje</th>
   </tr>
-  <tr *ngFor="let user of users">
+  @for(user of users; track user.id){
+  <tr>
     <td>{{ user.username }}</td>
     <td>{{ user.email }}</td>
     <td class="options">
-      <button class="button-edit" *ngIf="user.id" (click)="editUser(user.id)">
-        Edytuj
-      </button>
-      <button
-        class="button-delete"
-        *ngIf="user.id"
-        (click)="deleteUser(user.id)"
-      >
-        Usuń
-      </button>
+      @if(user.id){
+      <button class="button-edit" (click)="editUser(user.id)">Edytuj</button>
+      <button class="button-delete" (click)="deleteUser(user.id)">Usuń</button>
+      }
     </td>
   </tr>
+  }
 </table>

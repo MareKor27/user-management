@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { User, UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -12,11 +13,16 @@ import { CommonModule } from '@angular/common';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
-
-  constructor(private userService: UserService, private router: Router) {}
+  private userService = inject(UserService);
+  private router = inject(Router);
+  private subscriptions = new Subscription();
 
   ngOnInit(): void {
     this.loadUsers();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   goToHome(): void {
@@ -24,7 +30,10 @@ export class UserListComponent implements OnInit {
   }
 
   loadUsers(): void {
-    this.userService.getUsers().subscribe((users) => (this.users = users));
+    const sub = this.userService
+      .getUsers()
+      .subscribe((users) => (this.users = users));
+    this.subscriptions.add(sub);
   }
 
   addUser(): void {
@@ -37,7 +46,11 @@ export class UserListComponent implements OnInit {
 
   deleteUser(id: string): void {
     if (confirm('Czy na pewno chcesz usunąć użytkownika?')) {
-      this.userService.deleteUser(id).subscribe(() => this.loadUsers());
+      const sub = this.userService
+        .deleteUser(id)
+        .pipe(switchMap(() => this.userService.getUsers()))
+        .subscribe((users) => (this.users = users));
+      this.subscriptions.add(sub);
     }
   }
 }

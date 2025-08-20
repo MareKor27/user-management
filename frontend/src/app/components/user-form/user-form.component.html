@@ -1,11 +1,11 @@
 <h2>Dodaj użytkownika</h2>
-<form (ngSubmit)="saveUser()">
-  <label>Imię:</label>
-  <input [(ngModel)]="user.username" name="username" required />
+<form [formGroup]="createUserForm" (ngSubmit)="saveUser()">
+  <label for="username">Imię:</label>
+  <input id="username" type="text" formControlName="username" />
 
-  <label>Email:</label>
-  <input [(ngModel)]="user.email" name="email" type="email" required />
+  <label for="email">Email:</label>
+  <input id="email" type="email" formControlName="email" />
 
-  <button type="submit">Zapisz</button>
+  <button type="submit" [disabled]="createUserForm.invalid">Wyślij</button>
 </form>
 <button class="button-primary" (click)="goToUserList()">&#8592; Wróć</button>
