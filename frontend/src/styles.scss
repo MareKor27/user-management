@@ -2,6 +2,22 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --nav-height: 5rem;
+
+  --border-color: rgb(165, 165, 165);
+  --table-bg: rgb(227, 241, 255);
+
+  --delete-color: #dc3545;
+  --delete-bg: #ffdada;
+
+  --edit-color: #fd7e14;
+  --edit-bg: #fff2e6;
+
+  --font-main: "Inter", sans-serif;
 }
 
 body {
@@ -21,7 +37,7 @@ h2 {
 
 button {
   all: unset;
-  margin: 10px;
+  margin: 10px 0;
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
@@ -30,7 +46,7 @@ button {
 }
 
 .button-primary {
-  background-color: #f0e6e6;
+  background-color: #fff7f7;
   color: #374151;
   border: 1px solid #acb5c4;
   border-radius: 8px;

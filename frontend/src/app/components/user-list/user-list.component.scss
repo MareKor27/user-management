@@ -1,27 +1,29 @@
 .nav {
   display: flex;
-  height: 5rem;
+  height: var(--nav-height);
   justify-content: space-evenly;
   align-items: center;
 }
 
 table {
   width: 100%;
-  border: 0.5px solid rgb(165, 165, 165);
+  border: 0.5px solid var(--border-color);
   border-radius: 10px;
-  border-spacing: 0px;
+  border-spacing: 0;
   padding: 5px;
-  background-color: rgb(227, 241, 255);
-  font-family: "Inter", sans-serif;
+  background-color: var(--table-bg);
+  font-family: var(--font-main);
+
   td {
-    border-top: 1px solid rgb(165, 165, 165);
+    border-top: 1px solid var(--border-color);
     font-size: 0.9em;
-    background-color: rgb(227, 241, 255);
+    background-color: var(--table-bg);
     padding: 5px;
   }
+
   th {
     text-align: left;
-    background-color: rgb(227, 241, 255);
+    background-color: var(--table-bg);
     padding: 5px;
   }
 }
@@ -30,17 +32,19 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .button-delete {
-  border: 1px solid #dc3545;
-  background-color: #ffdada;
-  color: #dc3545;
+  border: 1px solid var(--delete-color);
+  background-color: var(--delete-bg);
+  color: var(--delete-color);
   font-weight: 600;
 }
+
 .button-edit {
-  border: 1px solid #fd7e14;
-  background-color: #fff2e6;
-  color: #fd7e14;
+  border: 1px solid var(--edit-color);
+  background-color: var(--edit-bg);
+  color: var(--edit-color);
   font-weight: 600;
 }
